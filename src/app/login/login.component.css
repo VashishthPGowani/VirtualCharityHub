@@ -1,0 +1,25 @@
+.custom {
+  background: #fccb90;
+
+  background: -webkit-linear-gradient(
+    to right,
+    #ee7724,
+    #d8363a,
+    #dd3675,
+    #b44593
+  );
+
+  background: linear-gradient(to right, #decec4, #9f3eb6, #36dd9b, #45b4ad)
+}
+
+@media (min-width: 768px) {
+  .custom-form {
+    height: 100vh !important;
+  }
+}
+@media (min-width: 769px) {
+  .custom {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+}
