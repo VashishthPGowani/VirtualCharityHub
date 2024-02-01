@@ -1,0 +1,12 @@
+nav{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    
+}
+
+.logo{
+    background-image: url("/assets/logo.png");
+}
+

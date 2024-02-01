@@ -1,0 +1,38 @@
+
+
+  .main_color{
+    color: white;
+  }
+
+  .main_bg_image{
+    background-image: url("/assets/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }  
+
+
+  .site-header a {
+    color: #8e8e8e;
+    transition: color .15s ease-in-out;
+  }
+  .site-header a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+
+  .flex-equal > * {
+    flex: 1;
+  }
+  @media (min-width: 768px) {
+    .flex-md-equal > * {
+      flex: 1;
+    }
+  }
+  

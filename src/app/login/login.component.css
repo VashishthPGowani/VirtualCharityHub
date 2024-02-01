@@ -11,6 +11,12 @@
 
   background: linear-gradient(to right, #decec4, #9f3eb6, #36dd9b, #45b4ad)
 }
+.bg_image{
+  background-image: url("/assets/register_bg.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 
 @media (min-width: 768px) {
   .custom-form {
