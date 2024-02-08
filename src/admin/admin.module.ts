@@ -19,7 +19,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
   imports: [
     CommonModule,
     AdminRoutingModule,
-    CoreModule
+    CoreModule,
   ]
 })
 export class AdminModule { }
