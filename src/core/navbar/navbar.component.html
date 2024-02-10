@@ -1,28 +1,17 @@
-<nav
-    class="navbar navbar-expand-sm navbar-light bg-light"
->
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="#">
             <img src="/assets/logo.png" alt="" height="36">
-          </a>
-        <button
-            class="navbar-toggler d-lg-none"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#MyNavbar"
-            aria-controls="MyNavbar"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
+        </a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#MyNavbar"
+            aria-controls="MyNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="MyNavbar">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-current="page"
-                        >Home
-                        </a
-                    >
+                    <a class="nav-link active" href="#" aria-current="page">Home
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login">Login</a>
@@ -34,19 +23,13 @@
                     <a class="nav-link" href="admin">Admin</a>
                 </li>
             </ul>
-            <form class="d-flex my-2 my-lg-0">
-                <button
-                    class="btn btn-outline-success my-2 my-sm-0 mr-5"
-                    type="submit"
-                >
+            <form class="d-flex gap-2 my-2 my-lg-0">
+                <a class="btn btn-outline-success my-2 my-sm-0 mr-5" routerLink="/login">
                     Login
-                </button>
-                <button
-                    class="btn btn-outline-success my-2 my-sm-0 ml-5"
-                    type="submit"
-                >
+                </a>
+                <a class="btn btn-outline-success my-2 my-sm-0 ml-5"  routerLink="/register">
                     SignUp
-                </button>
+                </a>
             </form>
         </div>
     </div>
