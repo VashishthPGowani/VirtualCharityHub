@@ -13,4 +13,16 @@ export class UserService {
   {
     return this.http.post(environment.apiUrl + 'register', formData);
   }
+
+  Login(formData:FormData)
+  {
+    return this.http.post(environment.apiUrl + 'login', formData);
+  }
+
+  getUserDetails()
+  {
+    let loginDetais:any = sessionStorage.getItem('userDetails');
+    let user = JSON.parse(loginDetais); 
+    return user;
+  }
 }

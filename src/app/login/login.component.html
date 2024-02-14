@@ -33,7 +33,7 @@
   
                     <div class="text-center pt-1 mb-5 pb-1">
   
-                      <button class="btn btn-outline-success mb-3" type="button" [disabled]="!loginForm.valid">Log
+                      <button class="btn btn-outline-success mb-3" type="button" (click)="onSubmit()" [disabled]="!loginForm.valid">Log
                         in</button> <br>
                       <a class="text-muted" href="#!">Forgot password?</a>
                     </div>

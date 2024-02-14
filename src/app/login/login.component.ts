@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+    formData:FormData = new FormData();
+    loginForm: FormGroup;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,private userService:UserService) { }
 
   ngOnInit(): void {
     this.IntializeLoginForm();
@@ -27,5 +31,26 @@ export class LoginComponent implements OnInit {
   {
     return this.loginForm.controls;
   }
+
+  onSubmit() {
+    this.formData.append('email',this.f['email'].value);
+    this.formData.append('password',this.f['password'].value);
+    this.loginUser();
+}
+
+  loginUser() {
+    this.userService.Login(this.formData).subscribe({
+      next: (response:any) => {        
+          sessionStorage.setItem("userDetails",JSON.stringify(response.user));
+          location.href = '/';
+      },
+      error: (error:any) => {
+        Swal.fire('error','internal error','error');
+      },
+      complete: () => {
+     
+      }
+    })
+     }
 
 }

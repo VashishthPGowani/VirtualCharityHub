@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,6 @@ export class RegisterComponent implements OnInit {
     get f() { return this.registerForm.controls; }
   
     onSubmit() {
-      debugger
         this.formData.append('name',this.f['name'].value);
         this.formData.append('email',this.f['email'].value);
         this.formData.append('password',this.f['password'].value);
@@ -38,11 +38,11 @@ export class RegisterComponent implements OnInit {
 
     registerUser() {
       this.userService.Register(this.formData).subscribe({
-        next: (response) => {
-         alert("user registration successful");
+        next: (response:any) => {
+          location.href = '/login';
         },
         error: (error) => {
-          alert("user registration failed");
+        Swal.fire('error','internal error','error');
         },
         complete: () => {
        
