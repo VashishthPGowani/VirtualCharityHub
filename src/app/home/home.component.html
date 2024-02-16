@@ -16,24 +16,15 @@
           </h3>
 
           <div class="row align-items-md-stretch">
-            <div class="col-md-6">
+            <div class="col-md-6" *ngFor="let charity of charities">
               <div class="h-100 p-5  bg-light rounded-3">
-                <img class="card-img-top" src="/assets/background.jpg" alt="Card image cap">
-                <h2 class="border-bottom mb-3 pb-2">Help the children in Africa</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, atque perferendis blanditiis iure deleniti nesciunt modi molestiae? Suscipit atque quis officia, laborum fugit provident libero quae assumenda adipisci ipsa quo.</p>
+                <img class="card-img-top" [src]="charity.CharityImageUrl" alt="Card image cap">
+                <h2 class="border-bottom mb-3 pb-2">{{charity.CharityName}}</h2>
+                <p>{{charity.CharityDescription}}</p>
                 
                 <button class="btn btn-outline-danger" type="button">Donate Now</button>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="h-100 p-5 bg-dark text-white border rounded-3">
-                <img class="card-img-top" src="/assets/donation1.jpg" alt="Card image cap">
-                <h2 class="border-bottom mb-3 pb-2">Help for School Building </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quam ipsa, alias, ut sequi excepturi at architecto ducimus voluptatum tempora temporibus nisi esse odit praesentium nostrum. Error laboriosam obcaecati explicabo!</p>
-                
-                <button class="btn btn-outline-danger" type="button">Donate Now</button>
-              </div>
-            </div>
+            </div>            
           </div>
         
         

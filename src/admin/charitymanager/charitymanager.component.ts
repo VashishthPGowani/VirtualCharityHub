@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CharityService } from 'src/app/services/charity.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-charitymanager',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./charitymanager.component.css']
 })
 export class CharitymanagerComponent implements OnInit {
+  charities:any;
 
-  constructor() { }
+  constructor(private charityService:CharityService) { }
 
   ngOnInit(): void {
+    this.GetCharities();
   }
 
+  GetCharities()
+  {
+    this.charityService.getCharities().subscribe({
+      next: (response:any) => {
+       this.charities = response;
+      },
+      error: (error) => {
+      Swal.fire('error','internal error','error');
+      },
+      complete: () => {
+     
+      }
+    })
+  }
 }
