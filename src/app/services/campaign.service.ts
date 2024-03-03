@@ -5,17 +5,12 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class CharityService {
+export class CampaignService {
 
   constructor(private http:HttpClient) { }
 
-  getCharities()
+  getCampaigns()
   {
-    return this.http.get(environment.apiUrl + 'charities');
-  }
-
-  approveOrRejectCharity(formData:FormData)
-  {
-    return this.http.post(environment.apiUrl + 'charityApproveReject',formData);
+    return this.http.get(environment.apiUrl + 'campaigns');
   }
 }
