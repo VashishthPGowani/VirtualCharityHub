@@ -18,7 +18,7 @@
           <div class="row align-items-md-stretch">
             <div class="col-md-6" *ngFor="let charity of charities">
               <div class="h-100 p-5  bg-light rounded-3">
-                <img class="card-img-top" [src]="charity.CharityImageUrl" alt="Card image cap">
+                <img class="card-img-top" [src]="'http://localhost/Backend-Virtual-Charity-Hub-/'+charity.CharityImageUrl" alt="Card image cap">
                 <h2 class="border-bottom mb-3 pb-2">{{charity.CharityName}}</h2>
                 <p>{{charity.CharityDescription}}</p>
                 
