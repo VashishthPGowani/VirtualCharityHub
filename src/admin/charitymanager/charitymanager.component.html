@@ -18,31 +18,40 @@
         <tr *ngFor="let charity of charities">
           <td>{{charity.CharityName}}</td>
           <td>{{charity.CharityDescription}}</td>
-          <td><a [href]="charity.CharityImageUrl" target="_blank">Open <i class="bi bi-arrow-up-right-square-fill"></i></a></td>
-          <td><a [href]="charity.DocumentUrl" target="_blank">Open <i class="bi bi-arrow-up-right-square-fill"></i></a></td>
+          <td><a [href]="imagePath+ charity.CharityImageUrl" target="_blank">Open <i
+                class="bi bi-arrow-up-right-square-fill"></i></a></td>
+          <td><a [href]="imagePath+charity.DocumentUrl" target="_blank">Open <i class="bi bi-arrow-up-right-square-fill"></i></a>
+          </td>
           <td>{{charity.CharityLocation}}</td>
           <td>
             <div class="d-flex gap-2" *ngIf="charity.Status == 0">
-              <a class="btn btn-success" (click)="ApproveorDenyCharitiy(charity.CharityId,'approve')"><i class="bi bi-check-circle-fill"></i> Accept</a>
-              <a class="btn btn-warning" (click)="ApproveorDenyCharitiy(charity.CharityId,'Reject')"><i class="bi bi-x-circle-fill"></i> Reject</a>
+              <a class="btn btn-success" (click)="ApproveorDenyCharitiy(charity.CharityId,'approve')"><i
+                  class="bi bi-check-circle-fill"></i> Accept</a>
+              <a class="btn btn-warning" (click)="ApproveorDenyCharitiy(charity.CharityId,'Reject')"><i
+                  class="bi bi-x-circle-fill"></i> Reject</a>
               <a class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Delete</a>
             </div>
-            <div *ngIf="charity.Status == 1">
+            <div *ngIf="charity.Status == 1" class="d-flex gap-2">
               <i class="bi bi-check-circle-fill text-success"></i> Approved
+              <a class="btn btn-warning" (click)="SuspendUnsuspendCharity(charity.CharityId,'suspend')"> Suspend</a>
             </div>
-            <div *ngIf="charity.Status == 2">
+            <div *ngIf="charity.Status == 2" class="d-flex gap-2">
               <i class="bi bi-x-circle-fill text-danger"></i> Rejected
+              <a class="btn btn-success" (click)="ApproveorDenyCharitiy(charity.CharityId,'approve')"><i
+                  class="bi bi-check-circle-fill"></i> Accept</a>
             </div>
             <div *ngIf="charity.Status == 3">
               <i class="bi bi-x-circle-fill text-danger"></i> Suspended
+              <a class="btn btn-success" (click)="SuspendUnsuspendCharity(charity.CharityId,'unsuspend')"><i
+                class="bi bi-check-circle-fill"></i> Unsuspend</a>
             </div>
           </td>
-            
+
         </tr>
-       </tbody>
+      </tbody>
     </table>
     <div class="text-center" *ngIf="charities == undefined || charities.length == 0">
-    <h4 class="text-danger">No Records Found!</h4>
+      <h4 class="text-danger">No Records Found!</h4>
     </div>
   </div>
 

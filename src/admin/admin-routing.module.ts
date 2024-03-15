@@ -8,7 +8,9 @@ const routes: Routes = [
   {path: '', component:AdminDashboardComponent},
   {path: 'dashboard', component:AdminDashboardComponent},
   {path: 'charities', component:CharitymanagerComponent},
-  {path: 'campaigns', component:CampaignManagerComponent}
+  {path: 'charities/:status', component:CharitymanagerComponent},
+  {path: 'campaigns', component:CampaignManagerComponent},
+  {path: 'campaigns/:status', component:CampaignManagerComponent}
 ];
 
 @NgModule({

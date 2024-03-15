@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         this.formData.append('email',this.f['email'].value);
         this.formData.append('password',this.f['password'].value);
         this.formData.append('phone',this.f['phone'].value);
-        this.formData.append('role','Donor');
+        this.formData.append('role','Admin');
         this.registerUser();
     }
 

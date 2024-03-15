@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class AdminDashboardComponent implements OnInit {
   charities:any;
+  pendingCharitiesCount:number;
+  pendingcampaignsCount:number;
   campaigns:any;
 
   constructor(private charityService:CharityService,
@@ -18,6 +20,8 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.GetCharities();
     this.GetCampaigns();
+    this.GetPendingCharities();
+    this.GetPendingCampaigns();
   }
 
   GetCharities()
@@ -35,11 +39,41 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
+  GetPendingCharities()
+  {
+    this.charityService.getCharities(0).subscribe({
+      next: (response:any) => {
+       this.pendingCharitiesCount = response.length;
+      },
+      error: (error) => {
+      Swal.fire('error','internal error','error');
+      },
+      complete: () => {
+     
+      }
+    })
+  }
+
   GetCampaigns()
   {
     this.campaignService.getCampaigns().subscribe({
       next: (response:any) => {
        this.campaigns = response;
+      },
+      error: (error) => {
+      Swal.fire('error','internal error','error');
+      },
+      complete: () => {
+     
+      }
+    })
+  }
+
+  GetPendingCampaigns()
+  {
+    this.campaignService.getCampaigns(0).subscribe({
+      next: (response:any) => {
+       this.pendingcampaignsCount = response.length;
       },
       error: (error) => {
       Swal.fire('error','internal error','error');
