@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
           location.href = '/';
       },
       error: (error:any) => {
-        Swal.fire('error','internal error','error');
+        Swal.fire('error','Invalid credentials','error');
       },
       complete: () => {
      

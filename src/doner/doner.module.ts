@@ -7,6 +7,8 @@ import { CoreModule } from 'src/core/core.module';
 import { DonorHomeComponent } from './donor-home/donor-home.component';
 import { DonerCharitiesComponent } from './doner-charities/doner-charities.component';
 import { DonerSettingsComponent } from './doner-settings/doner-settings.component';
+import { DonateComponent } from './donate/donate.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { DonerSettingsComponent } from './doner-settings/doner-settings.componen
     DonerlayoutComponent,
     DonorHomeComponent,
     DonerCharitiesComponent,
-    DonerSettingsComponent
+    DonerSettingsComponent,
+    DonateComponent
   ],
   imports: [
     CommonModule,
     DonerRoutingModule,
-    CoreModule
+    CoreModule,
+    FormsModule
   ]
 })
 export class DonerModule { }

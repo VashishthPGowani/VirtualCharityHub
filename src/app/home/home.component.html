@@ -1,10 +1,10 @@
 
-<main class>
+<main>
     <div class="main_color position-relative overflow-hidden p-3 p-md-5 m-md-4 text-center  main_bg_image">
       <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="main_color display-4 fw-normal">Together, We can Make a Difference</h1>
         <p class="lead fw-normal">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente, consequatur, error excepturi cum dolor, ullam eius sint consectetur odio mollitia cupiditate nobis? Quisquam, harum? Saepe possimus error corporis rem itaque.</p>
-        <button type="button" class="btn btn-danger">Donate Now</button>
+        <button type="button" class="btn btn-primary">Explore charities</button>
       </div>  
     </div>
 
@@ -22,7 +22,7 @@
                 <h2 class="border-bottom mb-3 pb-2">{{charity.CharityName}}</h2>
                 <p>{{charity.CharityDescription}}</p>
                 
-                <button class="btn btn-outline-danger" type="button">Donate Now</button>
+                <button class="btn btn-outline-danger" type="button" (click)="GotoDonate(charity.CharityId)" *ngIf="loginDetails != null && loginDetails != undefined && loginDetails.Role == 'Donor'">Donate Now</button>
               </div>
             </div>            
           </div>
@@ -37,7 +37,7 @@
               <img class="card-img-top" [src]="imagePath+campaign.CampaignImageUrl" alt="Card image cap">
               <h2 class="border-bottom mb-3 pb-2">{{campaign.CampaignName}}</h2>
               <p>{{campaign.CampaignDescription}}</p>              
-              <button class="btn btn-outline-danger" type="button">Donate Now</button>
+              <button class="btn btn-outline-danger" (click)="GotoDonate(campaign.CharityId)" type="button" *ngIf="loginDetails != null && loginDetails != undefined && loginDetails.Role == 'Donor'">Donate Now</button>
             </div>
           </div>
           </div>
