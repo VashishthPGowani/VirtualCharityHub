@@ -9,6 +9,7 @@ import { DonerCharitiesComponent } from './doner-charities/doner-charities.compo
 import { DonerSettingsComponent } from './doner-settings/doner-settings.component';
 import { DonateComponent } from './donate/donate.component';
 import { FormsModule } from '@angular/forms';
+import { MydonationsComponent } from './mydonations/mydonations.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     DonorHomeComponent,
     DonerCharitiesComponent,
     DonerSettingsComponent,
-    DonateComponent
+    DonateComponent,
+    MydonationsComponent
   ],
   imports: [
     CommonModule,

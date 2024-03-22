@@ -4,12 +4,14 @@ import { DonorHomeComponent } from './donor-home/donor-home.component';
 import { DonerCharitiesComponent } from './doner-charities/doner-charities.component';
 import { DonerSettingsComponent } from './doner-settings/doner-settings.component';
 import { DonateComponent } from './donate/donate.component';
+import { MydonationsComponent } from './mydonations/mydonations.component';
 
 const routes: Routes = [
   { path: '', component:DonorHomeComponent},
   { path: 'charities', component:DonerCharitiesComponent},
   { path: 'settings', component:DonerSettingsComponent},
   {path: 'donate', component:DonateComponent},
+  {path: 'donations', component:MydonationsComponent},
 ];
 
 @NgModule({

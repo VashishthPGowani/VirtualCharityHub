@@ -7,6 +7,9 @@ import { CoreModule } from 'src/core/core.module';
 import { CharitymanagerComponent } from './charitymanager/charitymanager.component';
 import { CampaignManagerComponent } from './campaign-manager/campaign-manager.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UsersComponent } from './users/users.component';
+import { AddEdituserComponent } from './add-edituser/add-edituser.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,12 +17,16 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AdminlayoutComponent,
     CharitymanagerComponent,
     CampaignManagerComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    UsersComponent,
+    AddEdituserComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

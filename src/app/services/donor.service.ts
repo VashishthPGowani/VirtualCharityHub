@@ -13,4 +13,9 @@ export class DonorService {
   {
     return this.http.post(environment.apiUrl + 'donate', formData);
   }
+
+  getDonations(donorId:number)
+  {
+    return this.http.get(environment.apiUrl + 'donationList?donorId=' + donorId);
+  }
 }

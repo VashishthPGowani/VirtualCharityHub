@@ -10,17 +10,20 @@
         <div class="collapse navbar-collapse" id="MyNavbar">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-current="page">Home
+                    <a class="nav-link active" routerLink="/">Home
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="loginDetails == undefined && loginDetails == null">
-                    <a class="nav-link" href="login">Login</a>
+                    <a class="nav-link" routerLink="login">Login</a>
                 </li>
                 <li class="nav-item" *ngIf="loginDetails == undefined && loginDetails == null">
-                    <a class="nav-link" href="register">Register</a>
+                    <a class="nav-link" routerLink="register">Register</a>
                 </li>
                 <li class="nav-item"  *ngIf="loginDetails != undefined && loginDetails != null && loginDetails.Role == 'Admin'">
-                    <a class="nav-link" href="admin">Admin</a>
+                    <a class="nav-link" routerLink="admin">Admin</a>
+                </li>
+                <li class="nav-item"  *ngIf="loginDetails != undefined && loginDetails != null && loginDetails.Role == 'Donor'">
+                    <a class="nav-link" routerLink="/donor/donations">My Donations</a>
                 </li>
             </ul>
             <form class="d-flex gap-2 my-2 my-lg-0" >

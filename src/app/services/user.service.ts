@@ -25,4 +25,29 @@ export class UserService {
     let user = JSON.parse(loginDetais); 
     return user;
   }
+
+  getAllUsers()
+  {
+    return this.http.get(environment.apiUrl + 'users');
+  }
+
+  getUser(userId:number)
+  {
+    return this.http.get(environment.apiUrl + 'users?id=' + userId);
+  }
+
+  deleteUser(userId:number)
+  {
+    return this.http.delete(environment.apiUrl + 'users?id=' + userId);
+  }
+
+  addUser(formData:FormData)
+  {
+    return this.http.post(environment.apiUrl + 'users',formData);
+  }
+
+  updateUser(formData:FormData)
+  {
+    return this.http.put(environment.apiUrl + 'userUpdate',formData);
+  }
 }
