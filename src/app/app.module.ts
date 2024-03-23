@@ -9,13 +9,17 @@ import { HomeComponent } from './home/home.component';
 import { CoreModule } from 'src/core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CharityListComponent } from './charity-list/charity-list.component';
+import { CampaignListComponent } from './campaign-list/campaign-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    CharityListComponent,
+    CampaignListComponent
   ],
   imports: [
     BrowserModule,

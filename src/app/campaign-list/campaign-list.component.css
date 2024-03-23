@@ -1,0 +1,5 @@
+.bg_image{
+    background-image: url("/assets/register_bg.avif");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
