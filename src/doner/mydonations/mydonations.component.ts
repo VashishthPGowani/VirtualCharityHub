@@ -16,7 +16,7 @@ export class MydonationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginDetails = this.userService.getUserDetails();
-
+    this.Getdonations();
   }
 
   Getdonations()
