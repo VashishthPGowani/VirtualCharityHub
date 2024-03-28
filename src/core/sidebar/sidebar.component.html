@@ -1,6 +1,6 @@
 <div class="d-md-block collapse">
     <div class="position-sticky pt-3">
-      <ul class="nav flex-column text-black ps-4">
+      <ul class="nav flex-column text-black ps-4" *ngIf="loginDetails.Role == 'Admin'">
         <li class="nav-item">
           <a class="nav-link text-decoration-none text-black " routerLink="dashboard">
             Dashboard
@@ -31,6 +31,23 @@
             Users
           </a>
         </li>
+      </ul>
+      <ul class="nav flex-column text-black ps-4" *ngIf="loginDetails.Role == 'Charity'">
+        <li class="nav-item">
+          <a class="nav-link text-decoration-none text-black " routerLink="/charity/dashboard">
+            Dashboard
+          </a>
+        </li>       
+        <li class="nav-item">
+          <a class="nav-link text-decoration-none text-black " routerLink="/charity/CampaginList">
+           My Campaigns
+          </a>
+        </li>       
+        <li class="nav-item">
+          <a class="nav-link text-decoration-none text-black " routerLink="/charity/AddCampagin">
+          Add Campaign
+          </a>
+        </li>       
       </ul>
     </div>
 </div>

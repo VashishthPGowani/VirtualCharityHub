@@ -6,11 +6,11 @@
         <form>
             <div class="mb-3">
                 <label for="campaignName" class="form-label">Campaign Name</label>
-                <input type="text" class="form-control" id="campaignName" name="campaignName" required>
+                <input type="text" class="form-control" id="campaignName" name="campaignName" >
             </div>
             <div class="mb-3">
                 <label for="campaignDescription" class="form-label">Campaign Description</label>
-                <textarea class="form-control" id="campaignDescription" name="campaignDescription" required></textarea>
+                <textarea class="form-control" id="campaignDescription" name="campaignDescription" ></textarea>
             </div>
             <div class="mb-3">
                 <label for="campaignImage" class="form-label">Campaign Image</label>
@@ -18,9 +18,9 @@
             </div>
             <div class="mb-3">
                 <label for="campaignAmount" class="form-label">Campaign Amount</label>
-                <input type="number" class="form-control" id="campaignAmount" name="campaignAmount" required>
+                <input type="number" class="form-control" id="campaignAmount" name="campaignAmount" >
             </div>
-            <button type="submit" class="btn btn-primary">Add Campaign</button>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add Campaign</button>
         </form>
     </div>
 </div>

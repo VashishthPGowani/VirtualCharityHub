@@ -20,7 +20,7 @@ export class CampaignManagerComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.imagePath = environment.apiUrl + '/uploads/images/';
+    this.imagePath = environment.apiUrl ;
     this.GetStatus();
     if (this.status == 0) {
       this.GetPendingCampaigns();

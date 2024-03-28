@@ -2,17 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import Swal from 'sweetalert2';
+import { CharityService } from '../services/charity.service';
 
 @Component({
   selector: 'app-charity-register',
   templateUrl: './charity-register.component.html',
-  styleUrls: ['./charity-register.component.css']
+  styleUrls: ['./charity-register.component.css'],
 })
 export class CharityRegisterComponent implements OnInit {
   registerForm: FormGroup;
   formData: FormData = new FormData();
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private charityService: CharityService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -21,14 +26,16 @@ export class CharityRegisterComponent implements OnInit {
       phone: [''],
       password: ['', Validators.required],
       image: [''],
-      document: [''],
+      document: ['', Validators.required],
       location: [''],
-      description: ['']
+      description: [''],
     });
   }
 
   // Convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
 
   onSubmit() {
     this.formData.append('name', this.f['name'].value);
@@ -36,16 +43,35 @@ export class CharityRegisterComponent implements OnInit {
     this.formData.append('password', this.f['password'].value);
     this.formData.append('phone', this.f['phone'].value);
     this.formData.append('role', 'Charity');
-    this.formData.append('image', this.f['image'].value);
-    this.formData.append('document', this.f['document'].value);
-    this.formData.append('location', this.f['location'].value);
-    this.formData.append('description', this.f['description'].value);
-
-    this.registerCharity();
+    this.registerUser();
   }
 
-  registerCharity() {
+  registerUser() {
     this.userService.Register(this.formData).subscribe({
+      next: (response: any) => {
+        debugger
+        this.formData = new FormData();
+        const charityImage : any = document.getElementById('image');
+        const documentUpload : any = document.getElementById('document');
+        this.formData.append('CharityImage', charityImage.files[0]);
+        this.formData.append('CharityDocument', documentUpload.files);
+        this.formData.append('CharityLocation', this.f['location'].value);
+        this.formData.append('CharityName', this.f['name'].value);
+        this.formData.append('CharityDescription', this.f['description'].value);
+        this.formData.append('UserId', response.userId);
+        this.createCharity();
+      },
+      error: (error) => {
+        Swal.fire('error', 'internal error', 'error');
+      },
+      complete: () => {
+        // Additional actions after registration completes
+      },
+    });
+  }
+
+  createCharity() {
+    this.charityService.createCharity(this.formData).subscribe({
       next: (response: any) => {
         location.href = '/login';
       },
@@ -54,7 +80,7 @@ export class CharityRegisterComponent implements OnInit {
       },
       complete: () => {
         // Additional actions after registration completes
-      }
+      },
     });
   }
 }

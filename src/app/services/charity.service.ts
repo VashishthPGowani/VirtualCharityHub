@@ -26,6 +26,13 @@ export class CharityService {
     );
   }
 
+  createCharity(formData: FormData) {
+    return this.http.post(
+      environment.apiUrl + 'charityCreate',
+      formData
+    );
+  }
+
   SuspendorUnsCharity(formData: FormData) {
     return this.http.post(
       environment.apiUrl + 'charitySuspend',

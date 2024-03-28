@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginDetails = this.userService.getUserDetails();
-    this.imagePath = environment.apiUrl + '/uploads/images/';
+    this.imagePath = environment.apiUrl ;
     this.GetCharities();
     this.GetCampaigns();
   }

@@ -21,7 +21,7 @@ export class CharitymanagerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.imagePath = environment.apiUrl + '/uploads/images/';
+    this.imagePath = environment.apiUrl ;
     this.GetStatus();
     if (this.status == 0) {
       this.GetPendingCharities();

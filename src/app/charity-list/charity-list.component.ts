@@ -17,7 +17,7 @@ export class CharityListComponent implements OnInit {
   constructor(private charityService:CharityService) { }
 
   ngOnInit(): void {
-    this.imagePath = environment.apiUrl + '/uploads/images/';
+    this.imagePath = environment.apiUrl ;
     this.GetCharities();
   }
 

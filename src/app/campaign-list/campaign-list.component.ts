@@ -16,7 +16,7 @@ export class CampaignListComponent implements OnInit {
   constructor(private campaignService:CampaignService) { }
 
   ngOnInit(): void {
-    this.imagePath = environment.apiUrl + '/uploads/images/';
+    this.imagePath = environment.apiUrl ;
     this.GetCampaigns();
   }
 
