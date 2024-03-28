@@ -30,6 +30,12 @@
                 <li class="nav-item"  *ngIf="loginDetails != undefined && loginDetails != null && loginDetails.Role == 'Admin'">
                     <a class="nav-link" routerLink="admin">Admin</a>
                 </li>
+                <li class="nav-item"  *ngIf="loginDetails != undefined && loginDetails != null && loginDetails.Role == 'Charity'">
+                    <a class="nav-link" routerLink="/charity/dashboard">Deshboard</a>
+                </li>
+                <li class="nav-item"  *ngIf="loginDetails != undefined && loginDetails != null && loginDetails.Role == 'Charity'">
+                    <a class="nav-link" routerLink="/charity/CampaginList">Campagin list</a>
+                </li>
                 <li class="nav-item"  *ngIf="loginDetails != undefined && loginDetails != null && loginDetails.Role == 'Donor'">
                     <a class="nav-link" routerLink="/donor/donations">My Donations</a>
                 </li>

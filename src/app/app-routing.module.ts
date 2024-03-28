@@ -11,11 +11,13 @@ import { CharityModule } from 'src/charity/charity.module';
 import { CharitylayoutComponent } from 'src/charity/charitylayout/charitylayout.component';
 import { CampaignListComponent } from './campaign-list/campaign-list.component';
 import { CharityListComponent } from './charity-list/charity-list.component';
+import { CharityRegisterComponent } from './charity-register/charity-register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'charity-register', component: CharityRegisterComponent },
   { path: 'charity-list', component:  CharityListComponent},
   { path: 'campaign-list', component: CampaignListComponent},
   {

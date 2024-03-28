@@ -1,0 +1,71 @@
+<div class="bg_image py-5">
+    <div class="mask d-flex align-items-center ">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card mt-5" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Register as Charity</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" id="name" class="form-control form-control-lg" formControlName="name" />
+                    <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+                      class="text-danger">Name Is required</div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-control form-control-lg" formControlName="email" />
+                    <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)"
+                      class="text-danger">Invalid email address</div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control form-control-lg" formControlName="phone" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-control form-control-lg" formControlName="password" />
+                    <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)"
+                      class="text-danger">Password is required</div>
+                  </div>
+                  <!-- Additional Fields for Charity Registration -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="image">Charity Image</label>
+                    <input type="file" id="image" class="form-control form-control-lg" formControlName="image" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="document">Charity Document</label>
+                    <input type="file" id="document" class="form-control form-control-lg" formControlName="document" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="location">Charity Location</label>
+                    <input type="text" id="location" class="form-control form-control-lg" formControlName="location" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="description">Charity Description</label>
+                    <textarea id="description" class="form-control form-control-lg" formControlName="description"></textarea>
+                  </div>
+                  <!-- End of Additional Fields -->
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="terms" />
+                    <label class="form-check-label" for="terms">
+                      I agree all statements in <a href="#!" class="text-primary"><u>Terms of service</u></a>
+                    </label>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" [disabled]="!registerForm.valid"
+                      class="btn btn-outline-success">Register</button>
+                  </div>
+                  <p class="text-center text-muted mt-5 mb-0">Already have an account? 
+                    <button type="button" class="btn btn-outline-danger" routerLink="/login">Login</button>
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -3,11 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { CharityDashboardComponent } from './charity-dashboard/charity-dashboard.component';
 import { OtherCharitiesComponent } from './other-charities/other-charities.component';
 import { MyCharitySettingsComponent } from './my-charity-settings/my-charity-settings.component';
+import { MyCampagineListComponent } from './my-campagine-list/my-campagine-list.component';
 
 const routes: Routes = [
   { path: '', component:CharityDashboardComponent},
+  { path: 'dashboard', component: CharityDashboardComponent },
   { path: 'otherCharities', component:OtherCharitiesComponent},
-  { path: 'MyCharitySettings', component:MyCharitySettingsComponent}
+  { path: 'MyCharitySettings', component:MyCharitySettingsComponent},
+  { path: 'CampaginList', component:MyCampagineListComponent}
 ];
 
 @NgModule({

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CharityListComponent } from './charity-list/charity-list.component';
 import { CampaignListComponent } from './campaign-list/campaign-list.component';
+import { CharityRegisterComponent } from './charity-register/charity-register.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CampaignListComponent } from './campaign-list/campaign-list.component';
     RegisterComponent,
     HomeComponent,
     CharityListComponent,
-    CampaignListComponent
+    CampaignListComponent,
+    CharityRegisterComponent
   ],
   imports: [
     BrowserModule,
