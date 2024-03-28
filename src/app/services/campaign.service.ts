@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CampaignService {
+  [x: string]: any;
   constructor(private http: HttpClient) {}
 
   getCampaigns(status?: number) {
