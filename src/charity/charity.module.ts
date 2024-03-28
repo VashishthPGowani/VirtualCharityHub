@@ -8,6 +8,7 @@ import { CharityDashboardComponent } from './charity-dashboard/charity-dashboard
 import { OtherCharitiesComponent } from './other-charities/other-charities.component';
 import { MyCharitySettingsComponent } from './my-charity-settings/my-charity-settings.component';
 import { MyCampagineListComponent } from './my-campagine-list/my-campagine-list.component';
+import { CampaignFormComponent } from './campaign-form/campaign-form.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MyCampagineListComponent } from './my-campagine-list/my-campagine-list.
     CharityDashboardComponent,
     OtherCharitiesComponent,
     MyCharitySettingsComponent,
-    MyCampagineListComponent
+    MyCampagineListComponent,
+    CampaignFormComponent
   ],
   imports: [
     CommonModule,
