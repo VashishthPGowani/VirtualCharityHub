@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
+import { StripeCardComponent, StripeService } from 'ngx-stripe';
 import { DonorService } from 'src/app/services/donor.service';
 import { EncryptionService } from 'src/app/services/encryption.service';
 import { UserService } from 'src/app/services/user.service';
@@ -13,9 +15,32 @@ import Swal from 'sweetalert2';
 export class DonateComponent implements OnInit {
   charityId: any;
   loginDetails: any;
+  @ViewChild(StripeCardComponent) card: StripeCardComponent;
   amount: number = 1;
   formData: FormData = new FormData();
-  constructor(private activatedRoute:ActivatedRoute,private userService:UserService,
+  cardOptions: StripeCardElementOptions = {
+    hidePostalCode: true,
+    style: {
+      base: {
+        iconColor: '#000000',
+        color: '#000000',
+        fontWeight: '700',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#000000',
+        },
+      },
+    },
+  };
+  elementsOptions: StripeElementsOptions = {
+    locale: 'en',
+    appearance: {
+      theme: 'flat',
+    },
+  };
+
+  constructor(private activatedRoute:ActivatedRoute,private userService:UserService,private stripeService:StripeService,
     private donorService:DonorService, private router:Router, private encryptionService:EncryptionService
     ) { }
 
@@ -45,7 +70,6 @@ export class DonateComponent implements OnInit {
   }
   else
   {
-    debugger
     this.formData.append('amount',this.amount.toString());
     this.formData.append('IsSuccess','1');
     this.donorService.donate(this.formData).subscribe({

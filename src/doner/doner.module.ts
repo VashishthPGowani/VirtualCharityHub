@@ -10,6 +10,7 @@ import { DonerSettingsComponent } from './doner-settings/doner-settings.componen
 import { DonateComponent } from './donate/donate.component';
 import { FormsModule } from '@angular/forms';
 import { MydonationsComponent } from './mydonations/mydonations.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MydonationsComponent } from './mydonations/mydonations.component';
     CommonModule,
     DonerRoutingModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    NgxStripeModule.forRoot("pk_test_51P1fxcP0bZKcBUr0Isx3wGJfn33hji4D5AK8dhmGgCd7j5oYDb4emPpLHZaiK5zbA1MrszDBg5qiFmp1pm7slywZ00M1KOMIWV")
   ]
 })
 export class DonerModule { }
