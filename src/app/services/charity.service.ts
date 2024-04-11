@@ -8,14 +8,14 @@ import { environment } from 'src/environments/environment';
 export class CharityService {
   constructor(private http: HttpClient) {}
 
-  getCharities(status?: number,charityId?:string) {
+  getCharities(status?: number,charityId?:number) {
     if(status === undefined && charityId === undefined) 
     {
       return this.http.get(environment.apiUrl + 'charities');      
     }
     else if(status != undefined && charityId != undefined)
     {
-      return this.http.get(environment.apiUrl + 'charities?status=' + status + '&CharityId=' + charityId);
+      return this.http.get(environment.apiUrl + 'charities?status=' + status + '&id=' + charityId);
     }
     else if(status != undefined && charityId === undefined)
       {
@@ -23,7 +23,7 @@ export class CharityService {
       }
       else
       {
-      return this.http.get(environment.apiUrl + 'charities?CharityId=' + charityId);
+      return this.http.get(environment.apiUrl + 'charities?id=' + charityId);
       }
   }
 

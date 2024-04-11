@@ -4,6 +4,7 @@ import { EncryptionService } from '../services/encryption.service';
 import { UserService } from '../services/user.service';
 import { CharityService } from '../services/charity.service';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-charitydetail',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./charitydetail.component.css'],
 })
 export class CharitydetailComponent implements OnInit {
+  imagePath:string;
   charityId: any;
   loginDetails: any;
   status = 1;
@@ -25,6 +27,7 @@ export class CharitydetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginDetails = this.userService.getUserDetails();
+    this.imagePath = environment.apiUrl;
     this.GetCharityId();
     if (this.charityId != null && this.charityId != undefined) {
       this.GetCharity();
@@ -48,8 +51,9 @@ export class CharitydetailComponent implements OnInit {
   }
 
   GetCharity() {
-    this.charityService.getCharities(this.status, this.charityId).subscribe({
+    this.charityService.getCharities(this.status, +this.charityId).subscribe({
       next: (response: any) => {
+        debugger
         this.charity = response;
       },
       error: (error) => {
