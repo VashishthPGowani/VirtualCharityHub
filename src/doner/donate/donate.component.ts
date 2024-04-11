@@ -72,6 +72,33 @@ export class DonateComponent implements OnInit {
   {
     this.formData.append('amount',this.amount.toString());
     this.formData.append('IsSuccess','1');
+    // this.stripeService
+    // .confirmPayment({
+    //   elements: this.elementsOptions.elements,
+    //   confirmParams: {
+    //     payment_method_data: {
+    //       billing_details: {
+    //         name: name as string,
+    //         email: email as string,
+    //         address: {
+    //           line1: address as string,
+    //           postal_code: zipcode as string,
+    //           city: city as string
+    //         }
+    //       }
+    //     }
+    //   },
+    //   redirect: 'if_required'
+    // })
+    // .subscribe(result => {
+    //   if (result.error) {
+    //     alert({ success: false, error: result.error.message });
+    //   } else {
+    //     if (result.paymentIntent.status === 'succeeded') {
+    //       alert({ success: true });
+    //     }
+    //   }
+    // });
     this.donorService.donate(this.formData).subscribe({
       next: (response:any) => {
        Swal.fire('success','Payment successful','success');

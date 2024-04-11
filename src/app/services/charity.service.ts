@@ -8,15 +8,23 @@ import { environment } from 'src/environments/environment';
 export class CharityService {
   constructor(private http: HttpClient) {}
 
-  getCharities(status?: number) {
-    if(status === undefined)
+  getCharities(status?: number,charityId?:string) {
+    if(status === undefined && charityId === undefined) 
     {
       return this.http.get(environment.apiUrl + 'charities');      
     }
-    else
+    else if(status != undefined && charityId != undefined)
     {
-      return this.http.get(environment.apiUrl + 'charities?status=' + status);
+      return this.http.get(environment.apiUrl + 'charities?status=' + status + '&CharityId=' + charityId);
     }
+    else if(status != undefined && charityId === undefined)
+      {
+      return this.http.get(environment.apiUrl + 'charities?status=' + status);
+      }
+      else
+      {
+      return this.http.get(environment.apiUrl + 'charities?CharityId=' + charityId);
+      }
   }
 
   approveOrRejectCharity(formData: FormData) {

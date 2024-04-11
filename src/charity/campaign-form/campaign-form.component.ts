@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-campaign-form',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CampaignFormComponent implements OnInit {
   formData: FormData = new FormData();
+  loginDetails:any;
 
-  constructor() { }
+  constructor(    private userService:UserService,
+    ) { }
 
   ngOnInit(): void {
+    this.loginDetails = this.userService.getUserDetails();
   }
 
   onSubmit()

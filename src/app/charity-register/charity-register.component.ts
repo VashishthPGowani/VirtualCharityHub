@@ -49,7 +49,6 @@ export class CharityRegisterComponent implements OnInit {
   registerUser() {
     this.userService.Register(this.formData).subscribe({
       next: (response: any) => {
-        debugger
         this.formData = new FormData();
         const charityImage : any = document.getElementById('image');
         const documentUpload : any = document.getElementById('document');

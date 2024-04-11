@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CharityListComponent } from './charity-list/charity-list.component';
 import { CampaignListComponent } from './campaign-list/campaign-list.component';
 import { CharityRegisterComponent } from './charity-register/charity-register.component';
+import { CharitydetailComponent } from './charitydetail/charitydetail.component';
+import { CampaigndetailComponent } from './campaigndetail/campaigndetail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { CharityRegisterComponent } from './charity-register/charity-register.co
     HomeComponent,
     CharityListComponent,
     CampaignListComponent,
-    CharityRegisterComponent
+    CharityRegisterComponent,
+    CharitydetailComponent,
+    CampaigndetailComponent
   ],
   imports: [
     BrowserModule,
