@@ -41,8 +41,8 @@
                     
                   </div>                  
                   <div class="d-flex flex-column mt-4">
-                    <button class="btn btn-success btn-sm" type="button">Donate Now</button>
-                    <button class="btn btn-outline-success btn-sm mt-2" type="button">
+                    <button class="btn btn-success btn-sm" type="button" (click)="GotoDonate(campaign.CharityId)">Donate Now</button>
+                    <button (click)="GotoMoreDetails(campaign.CampaignId)" class="btn btn-outline-success btn-sm mt-2" type="button">
                         More Details
                     </button>
                   </div>

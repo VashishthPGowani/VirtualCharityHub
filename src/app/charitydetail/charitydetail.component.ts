@@ -53,7 +53,6 @@ export class CharitydetailComponent implements OnInit {
   GetCharity() {
     this.charityService.getCharities(this.status, +this.charityId).subscribe({
       next: (response: any) => {
-        debugger
         this.charity = response;
       },
       error: (error) => {

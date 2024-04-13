@@ -9,11 +9,18 @@ export class CampaignService {
   [x: string]: any;
   constructor(private http: HttpClient) {}
 
-  getCampaigns(status?: number) {
+  getCampaigns(status?: number,campaignId?:number) {
     if (status === undefined) {
       return this.http.get(environment.apiUrl + 'campaigns');
     } else {
-      return this.http.get(environment.apiUrl + 'campaigns?status=' + status);
+      if(campaignId != undefined)
+        {
+          return this.http.get(environment.apiUrl + 'campaigns?status=' + status + '&id=' + campaignId);
+        }
+        else
+        {
+          return this.http.get(environment.apiUrl + 'campaigns?status=' + status);
+        }
     }
   }
 
@@ -24,6 +31,14 @@ export class CampaignService {
   approveOrRejectCampaign(formData: FormData) {
     return this.http.post(
       environment.apiUrl + 'campaignApproveReject.php',
+      formData
+    );
+  }
+
+  createCampaign(formData: FormData)
+  {
+    return this.http.post(
+      environment.apiUrl + 'campaignCreate',
       formData
     );
   }
