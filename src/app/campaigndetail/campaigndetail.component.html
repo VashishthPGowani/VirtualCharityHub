@@ -3,10 +3,10 @@
         <div class="col-md-12 col-xl-10">
           <div class="card shadow-0 border rounded-3">
             <div class="card-body">
-              <div class="row">
+              <div class="row" *ngFor="let camp of campaign">
                 <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                   <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                    <img [src]="imagePath+campaign.CampaignImageUrl"
+                    <img [src]="imagePath+camp.CampaignImageUrl"
                       class="img-fluid" />
                     <a href="#!">
                       <div class="hover-overlay">
@@ -18,14 +18,14 @@
                
                 <div class="col-md-6 col-lg-9 col-xl-9 border-sm-start-none border-start">
                   <div class="d-flex flex-column mt-4">
-                     <div class="col-md-6 col-lg-6 col-xl-6"><h2>{{campaign.CampaignName}}</h2>
+                     <div class="col-md-6 col-lg-6 col-xl-6"><h2>{{camp.CampaignName}}</h2>
                  
                   
                 </div>
                     <p class="text-start mb-4 ">
-                        {{campaign.CampaignDescription}}
+                        {{camp.CampaignDescription}}
                       </p>
-                    <button class="btn btn-success btn-sm" (click)="GotoDonate(campaign.CharityId)" type="button" *ngIf="loginDetails != null && loginDetails != undefined">Donate Now</button>
+                    <button class="btn btn-success btn-sm" (click)="GotoDonate(camp.CharityId)" type="button" *ngIf="loginDetails != null && loginDetails != undefined">Donate Now</button>
                   
                   </div>
                 </div>
