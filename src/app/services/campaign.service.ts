@@ -9,7 +9,7 @@ export class CampaignService {
   [x: string]: any;
   constructor(private http: HttpClient) {}
 
-  getCampaigns(status?: number,campaignId?:number) {
+  getCampaigns(status?: number,campaignId?:number,charityId?:number) {
     if (status === undefined) {
       return this.http.get(environment.apiUrl + 'campaigns');
     } else {
@@ -17,6 +17,10 @@ export class CampaignService {
         {
           return this.http.get(environment.apiUrl + 'campaigns?status=' + status + '&id=' + campaignId);
         }
+        if(charityId != undefined)
+          {
+            return this.http.get(environment.apiUrl + 'campaigns?status=' + status +  '&CharityId=' + charityId);
+          }
         else
         {
           return this.http.get(environment.apiUrl + 'campaigns?status=' + status);

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
-import { StripeCardComponent, StripeService } from 'ngx-stripe';
+import { StripeCardComponent, StripePaymentElementComponent, StripeService } from 'ngx-stripe';
 import { DonorService } from 'src/app/services/donor.service';
 import { EncryptionService } from 'src/app/services/encryption.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,6 +17,7 @@ export class DonateComponent implements OnInit {
   loginDetails: any;
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
   amount: number = 1;
+  paymentElement!: StripePaymentElementComponent;
   formData: FormData = new FormData();
   cardOptions: StripeCardElementOptions = {
     hidePostalCode: true,
@@ -72,45 +73,49 @@ export class DonateComponent implements OnInit {
   {
     this.formData.append('amount',this.amount.toString());
     this.formData.append('IsSuccess','1');
-    // this.stripeService
-    // .confirmPayment({
-    //   elements: this.elementsOptions.elements,
-    //   confirmParams: {
-    //     payment_method_data: {
-    //       billing_details: {
-    //         name: name as string,
-    //         email: email as string,
-    //         address: {
-    //           line1: address as string,
-    //           postal_code: zipcode as string,
-    //           city: city as string
-    //         }
-    //       }
-    //     }
+    const name = this.loginDetails.Name;
+    this.stripeService
+      .createToken(this.card.element, { name })
+      .subscribe((result) => {
+        if (result.token) {
+          // Use the token
+          console.log(result.token.id);
+        } else if (result.error) {
+          // Error creating the token
+          console.log(result.error.message);
+        }
+      });
+      // this.stripeService.confirmCardPayment("sk_test_51P1fxcP0bZKcBUr0aovb6J0qX4TpmJiCariZdarZqkcLcaOMijJIvSey4qeQo5o7ZQpHiLEwpfcVw6TpBlfkbhm90001h0F7jc", {
+      //   payment_method: {
+      //     card: this.card.element,
+      //     billing_details: {
+      //       name: name,
+      //       email: this.loginDetails.Email,
+      //     },
+      //   },
+      // }).subscribe((result) => {
+      //   if (result.error) {
+      //     // Show error to your customer (e.g., insufficient funds)
+      //     console.log(result.error.message);
+      //   } else {
+      //     // The payment has been processed!
+      //     if (result.paymentIntent.status === 'succeeded') {
+      //      console.log(result)
+      //     }
+      //   }
+      // });
+    // this.donorService.donate(this.formData).subscribe({
+    //   next: (response:any) => {
+    //    Swal.fire('success','Payment successful','success');
+    //   history.back();
     //   },
-    //   redirect: 'if_required'
-    // })
-    // .subscribe(result => {
-    //   if (result.error) {
-    //     alert({ success: false, error: result.error.message });
-    //   } else {
-    //     if (result.paymentIntent.status === 'succeeded') {
-    //       alert({ success: true });
-    //     }
-    //   }
-    // });
-    this.donorService.donate(this.formData).subscribe({
-      next: (response:any) => {
-       Swal.fire('success','Payment successful','success');
-      history.back();
-      },
-      error: (error) => {
-      Swal.fire('error','internal error','error');
-      },
-      complete: () => {
+    //   error: (error) => {
+    //   Swal.fire('error','internal error','error');
+    //   },
+    //   complete: () => {
      
-      }
-    })
+    //   }
+    // })
   }
 }
 
