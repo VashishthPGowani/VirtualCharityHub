@@ -13,6 +13,11 @@ export class DonorService {
   {
     return this.http.post(environment.apiUrl + 'donate', formData);
   }
+  createCharge(formData:FormData)
+  {
+    return this.http.post(environment.apiUrl + 'createCharge', formData);
+  }
+
 
   getDonations(donorId:number)
   {

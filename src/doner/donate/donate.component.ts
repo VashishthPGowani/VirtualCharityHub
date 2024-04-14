@@ -19,6 +19,8 @@ export class DonateComponent implements OnInit {
   amount: number = 1;
   paymentElement!: StripePaymentElementComponent;
   formData: FormData = new FormData();
+  formDatacharge: FormData = new FormData();
+
   cardOptions: StripeCardElementOptions = {
     hidePostalCode: true,
     style: {
@@ -63,6 +65,34 @@ export class DonateComponent implements OnInit {
     const encryptedCharityId = this.activatedRoute.snapshot.queryParams['charityId'];
     this.charityId = this.encryptionService.decrypt(encryptedCharityId,'cids');
   }
+createDonationToDb()
+{
+  this.donorService.donate(this.formData).subscribe({
+    next: (response:any) => {
+    },
+    error: (error) => {
+    Swal.fire('error','internal error','error');
+    },
+    complete: () => {
+   
+    }
+  })
+}
+createChargestripe(){
+this.donorService.createCharge(this.formDatacharge).subscribe({
+  next: (response:any) => {
+    this.createDonationToDb();
+   Swal.fire('success','Payment successful','success');
+  history.back();
+  },
+  error: (error) => {
+  Swal.fire('error','internal error','error');
+  },
+  complete: () => {
+ 
+  }
+})
+}
 
   OnSubmit()
   {
@@ -78,44 +108,17 @@ export class DonateComponent implements OnInit {
       .createToken(this.card.element, { name })
       .subscribe((result) => {
         if (result.token) {
-          // Use the token
-          console.log(result.token.id);
+          
+          this.formDatacharge.append('amount',this.amount.toString());
+          this.formDatacharge.append('token',result.token.id);
+          this.createChargestripe();
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);
         }
       });
-      // this.stripeService.confirmCardPayment("sk_test_51P1fxcP0bZKcBUr0aovb6J0qX4TpmJiCariZdarZqkcLcaOMijJIvSey4qeQo5o7ZQpHiLEwpfcVw6TpBlfkbhm90001h0F7jc", {
-      //   payment_method: {
-      //     card: this.card.element,
-      //     billing_details: {
-      //       name: name,
-      //       email: this.loginDetails.Email,
-      //     },
-      //   },
-      // }).subscribe((result) => {
-      //   if (result.error) {
-      //     // Show error to your customer (e.g., insufficient funds)
-      //     console.log(result.error.message);
-      //   } else {
-      //     // The payment has been processed!
-      //     if (result.paymentIntent.status === 'succeeded') {
-      //      console.log(result)
-      //     }
-      //   }
-      // });
-    // this.donorService.donate(this.formData).subscribe({
-    //   next: (response:any) => {
-    //    Swal.fire('success','Payment successful','success');
-    //   history.back();
-    //   },
-    //   error: (error) => {
-    //   Swal.fire('error','internal error','error');
-    //   },
-    //   complete: () => {
-     
-    //   }
-    // })
+      
+   
   }
 }
 
