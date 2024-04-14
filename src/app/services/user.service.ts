@@ -48,6 +48,6 @@ export class UserService {
 
   updateUser(formData:FormData)
   {
-    return this.http.put(environment.apiUrl + 'userUpdate',formData);
+    return this.http.post(environment.apiUrl + 'userUpdate',formData);
   }
 }

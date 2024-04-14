@@ -27,7 +27,7 @@ export class MyCampagineListComponent implements OnInit {
   }
 
   GetCampaigns() {
-    this.campaignService.getCampaigns(this.status,undefined,+this.loginDetails.CharityId).subscribe({
+    this.campaignService.getCampaigns(this.status,undefined,this.loginDetails.CharityId).subscribe({
       next: (response: any) => {
         this.campaigns = response;
       },
