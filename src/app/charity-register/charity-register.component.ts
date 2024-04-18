@@ -64,7 +64,7 @@ export class CharityRegisterComponent implements OnInit {
         Swal.fire('error', 'internal error', 'error');
       },
       complete: () => {
-        // Additional actions after registration completes
+        
       },
     });
   }
@@ -75,10 +75,10 @@ export class CharityRegisterComponent implements OnInit {
         location.href = '/login';
       },
       error: (error) => {
-        Swal.fire('error', 'internal error', 'error');
+        location.href = '/login';
       },
       complete: () => {
-        // Additional actions after registration completes
+        
       },
     });
   }
