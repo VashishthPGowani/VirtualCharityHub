@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     sessionStorage.clear();
-    location.href = 'http://localhost:4200/login';
+    location.href = '/login';
     }
 
 }
